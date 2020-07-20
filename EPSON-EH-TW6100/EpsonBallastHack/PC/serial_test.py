@@ -12,12 +12,12 @@ import serial
 
 port = serial.Serial('/dev/ttyUSB0', 4800)
 
-snd = b'\x84'
+snd = b'\x81'
 port.write(snd)
 
 while True:
     data = port.read()  # .hex()
-    print(data)
+    print('Received: ', data)
 
 
 # data = bytes(sys.argv[1], 'ascii')

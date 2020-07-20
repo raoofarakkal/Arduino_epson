@@ -18,7 +18,49 @@ doubted data
 Received:  b'\xf8'
 ________________________________________________________________________________________________________________________
 
+Got the following data from 
+http://forum.arduino.ua/viewtopic.php?id=125&p=8
+#183
+and it is much similar to EPSON TW6100 projector
 
+======================
+Ballast		Mother
+----------------------
+INITIALIZATION
+--------------
+		0x7F
+		0xF2
+0x01		0xF4
+0x1F		0x22
+0x22	
+
+LAMP ON	
+-------
+		0x81
+0x0D	
+
+JOB	
+---
+		0x81
+0x8E		0x10
+0x10		0x81
+0x8E		0x81
+0x8F		0x81
+0x90		0x81
+0x91		0x81
+0x92		0x81
+0x93		0x81
+0x94		0x81
+0x95		0x81
+0x96		0x81
+0x97		0x81
+0x98		0x81
+0x99		0x81
+0x9A	
+--------------------
+
+
+________________________________________________________________
 Got the following data from http://forum.arduino.ua/viewtopic.php?id=125&p=3
 ----------------------------------------------------------------------------
 I wrote down signals of 4800 Evens, on the left is a request from the mother, on the right is the response from the ballast

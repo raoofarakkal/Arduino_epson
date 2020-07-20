@@ -58,6 +58,7 @@ void func_INIT1( int data )
     switch ( data )
     {
         case 0x00:  Serial.write(0x00); break;
+        case 0x7F:  Serial.write(0x7F); break;
         case 0xF2:  Serial.write(0x04); break;
         case 0xF4:  Serial.write(0xFF); break;
         case 0x40:  Serial.write(0x40); break;
