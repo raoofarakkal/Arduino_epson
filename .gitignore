@@ -91,6 +91,8 @@ env.bak/
 venv.bak/
 .idea
 .idea/
+.data
+.data/
 
 # Spyder project settings
 .spyderproject
