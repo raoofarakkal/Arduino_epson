@@ -10,14 +10,23 @@ import serial
 #     bytesize=serial.EIGHTBITS
 # )
 
-port = serial.Serial('/dev/ttyUSB0', 4800)
+usb0 = serial.Serial('/dev/ttyUSB0', 4800)
+usb1 = serial.Serial('/dev/ttyUSB1', 4800)
 
 snd = b'\x81'
-port.write(snd)
+usb0.write(snd)
+print('Send to usb-0: ', snd)
 
-while True:
-    data = port.read()  # .hex()
-    print('Received: ', data)
+data = usb1.read()  # .hex()
+print('Received on usb-1: ', data)
+	
+
+snd = b'\x82'
+usb1.write(snd)
+print('Send to usb-1: ', snd)
+
+data = usb0.read()  # .hex()
+print('Received on usb-0: ', data)
 
 
 # data = bytes(sys.argv[1], 'ascii')
@@ -47,4 +56,6 @@ while True:
 #     print('Received: ', data)
 #     # break
 
-port.close()
+usb0.close()
+usb1.close()
+
