@@ -1,7 +1,7 @@
 int data;
 int StatusLamp;
 
-int init2_0x84_cnt = 7
+int init2_0x84_cnt = 7;
 int work1_vals[13] = {0x85, 0x85, 0x85, 0x86, 0x85, 0x86, 0x86, 0x86, 0x86, 0x86, 0x86, 0x86, 0x85};
 int work1_vals_idx = 0;
 
@@ -63,7 +63,7 @@ void func_INIT2( int data )
             }
             else
             {
-                Serial.write(0x85)
+                Serial.write(0x85);
             }
             break;
         case 0x11:  Serial.write(0x11); break;
@@ -73,13 +73,13 @@ void func_INIT2( int data )
     if ( data ==  0x11 )   StatusLamp = WORK1;
 }
 
- 
+
 void func_WORK1( int data )
 {
  switch ( data )
  {
   case 0x81:
-    if(work1_vals_idx < sizeof(work1_vals)
+    if(work1_vals_idx < sizeof(work1_vals))
     {
         Serial.write(work1_vals[work1_vals_idx]);
         work1_vals_idx++;
@@ -118,7 +118,7 @@ void func_WORK2( int data )
     }
 }
 
-void serialEvent() 
+void serialEvent()
 {
     data = Serial.read();
 
