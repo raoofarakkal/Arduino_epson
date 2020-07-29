@@ -37,12 +37,12 @@ void func_unique_request( int data )
     {
         case 0x27:  Serial.write(0x27); break;
 
-        //Stand by,
-        case 0x00:
-            delay(100);
-            Serial.write(0x00);
-            func_reset();
-            break;
+        // //Stand by,
+        //case 0x00:
+        //    delay(100);
+        //    Serial.write(0x00);
+        //    func_reset();
+        //    break;
 
         default:  break;
     }
