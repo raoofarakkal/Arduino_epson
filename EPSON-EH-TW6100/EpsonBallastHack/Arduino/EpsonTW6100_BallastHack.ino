@@ -5,9 +5,9 @@ int init2_0x84_cnt = 7;
 int work1_vals[13] = {0x85, 0x85, 0x85, 0x86, 0x85, 0x86, 0x86, 0x86, 0x86, 0x86, 0x86, 0x86, 0x85};
 int work1_vals_idx = 0;
 
-int work1_vals2 = 0x86;
-int work1_vals2_times = 56;
-int work1_vals2_cnt = work1_vals2_times;
+int work2_val = 0x86;
+int work2_val_times = 56;
+int work2_val_cnt = work1_val_times;
 
 
 #define  INIT1  1
@@ -98,20 +98,20 @@ void func_WORK2( int data )
     switch ( data )
     {
         case 0x81:
-            if(work1_vals2_cnt == 0)
+            if(work2_val_cnt == 0)
             {
-                work1_vals2_cnt = work1_vals2_times;
-                if(work1_vals2 == 0x86)
+                work2_val_cnt = work2_val_times;
+                if(work2_val == 0x86)
                 {
-                    work1_vals2 == 0x87;
+                    work2_val == 0x87;
                 }
                 else
                 {
-                    work1_vals2 == 0x86;
+                    work2_val == 0x86;
                 }
             }
-            Serial.write(work1_vals2);
-            work1_vals2_cnt--;
+            Serial.write(work2_val);
+            work2_val_cnt--;
             break;
         default  : func_unique_request(data);
     }
