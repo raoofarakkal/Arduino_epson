@@ -78,7 +78,7 @@ void func_WORK1( int data )
  switch ( data )
  {
   case 0x81:
-    if(work1_vals_idx < sizeof(work1_vals))
+    if(work1_vals_idx <= 12)
     {
         Serial.write(work1_vals[work1_vals_idx]);
         work1_vals_idx++;
