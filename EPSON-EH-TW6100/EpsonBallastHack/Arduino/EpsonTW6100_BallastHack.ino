@@ -7,7 +7,7 @@ int work1_vals_idx = 0;
 
 int work2_val = 0x86;
 int work2_val_times = 56;
-int work2_val_cnt = work1_val_times;
+int work2_val_cnt = work2_val_times;
 
 
 #define  INIT1  1
