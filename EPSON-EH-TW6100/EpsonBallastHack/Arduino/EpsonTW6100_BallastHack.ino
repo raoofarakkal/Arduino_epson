@@ -98,16 +98,16 @@ void func_WORK2( int data )
     switch ( data )
     {
         case 0x81:
-            if(work2_val_cnt == 0)
+            if(work2_val_cnt <= 0)
             {
                 work2_val_cnt = work2_val_times;
                 if(work2_val == 0x86)
                 {
-                    work2_val == 0x87;
+                    work2_val = 0x87;
                 }
                 else
                 {
-                    work2_val == 0x86;
+                    work2_val = 0x86;
                 }
             }
             Serial.write(work2_val);
