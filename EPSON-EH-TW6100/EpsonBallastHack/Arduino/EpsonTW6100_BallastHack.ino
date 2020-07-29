@@ -23,6 +23,13 @@ void setup() {
 void loop() {
 }
 
+void func_reset()
+{
+    StatusLamp = INIT1;
+    work1_vals_idx = 0;
+    work2_val = 0x86;
+    work2_val_cnt = work2_val_times;
+}
 
 void func_unique_request( int data )
 {
@@ -113,6 +120,10 @@ void func_WORK2( int data )
             Serial.write(work2_val);
             work2_val_cnt--;
             break;
+        case 0x00:
+            delay(100);
+            Serial.write(0x00);
+            func_reset();
         default  : func_unique_request(data);
     }
 }
