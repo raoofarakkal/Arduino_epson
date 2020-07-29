@@ -36,7 +36,14 @@ void func_unique_request( int data )
     switch ( data )
     {
         case 0x27:  Serial.write(0x27); break;
-        //case 0x11:  Serial.write(0x11); break;
+
+        //Stand by,
+        case 0x00:
+            delay(100);
+            Serial.write(0x00);
+            func_reset();
+            break;
+
         default:  break;
     }
 }
@@ -46,10 +53,15 @@ void func_INIT1( int data )
     switch ( data )
     {
         case 0xF2:  Serial.write(0x01); break;
+
         case 0xF1:  Serial.write(0x43); break;
+
         case 0xF4:  Serial.write(0xe0); break;
+
         case 0xF5:  Serial.write(0x07); break;
+
         case 0x81:  Serial.write(0x04); break;
+
         default  :  func_unique_request(data); break;
     }
     // code change status lamp to step2 ( example 0x81 )
@@ -72,7 +84,9 @@ void func_INIT2( int data )
                 Serial.write(0x85);
             }
             break;
+
         case 0x11:  Serial.write(0x11); break;
+
         default  :  func_unique_request(data); break;
     }
     // code change status lamp to step3 ( example 0x11 )
@@ -82,22 +96,23 @@ void func_INIT2( int data )
 
 void func_WORK1( int data )
 {
- switch ( data )
- {
-  case 0x81:
-    if(work1_vals_idx <= 12)
+    switch ( data )
     {
-        Serial.write(work1_vals[work1_vals_idx]);
-        work1_vals_idx++;
+        case 0x81:
+            if(work1_vals_idx <= 12)
+            {
+                Serial.write(work1_vals[work1_vals_idx]);
+                work1_vals_idx++;
+            }
+            else
+            {
+                StatusLamp = WORK2;
+                func_WORK2(data);
+            }
+            break;
+
+        default  : func_unique_request(data); break;
     }
-    else
-    {
-        StatusLamp = WORK2;
-        func_WORK2(data);
-    }
-    break;
-  default  : func_unique_request(data); break;
- }
 }
 
 void func_WORK2( int data )
@@ -120,10 +135,7 @@ void func_WORK2( int data )
             Serial.write(work2_val);
             work2_val_cnt--;
             break;
-        case 0x00:
-            delay(100);
-            Serial.write(0x00);
-            func_reset();
+
         default  : func_unique_request(data);
     }
 }
@@ -135,8 +147,11 @@ void serialEvent()
     switch ( StatusLamp )
     {
         case INIT1: func_INIT1(data); break;
+
         case INIT2: func_INIT2(data); break;
+
         case WORK1: func_WORK1(data); break;
+
         case WORK2: func_WORK2(data); break;
     }
 
