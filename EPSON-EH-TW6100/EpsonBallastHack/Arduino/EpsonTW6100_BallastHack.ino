@@ -1,3 +1,5 @@
+int led_stat = 1; //Led toggle settings for func_WORK2() execution
+
 int data;
 int StatusLamp;
 
@@ -8,6 +10,7 @@ int work1_vals_idx = 0;
 int work2_val = 0x86;
 int work2_val_times = 56;
 int work2_val_cnt = work2_val_times;
+
 
 
 #define  INIT1  1
@@ -32,6 +35,20 @@ void func_reset()
     work1_vals_idx = 0;
     work2_val = 0x86;
     work2_val_cnt = work2_val_times;
+}
+
+void func_led_toggle()
+{
+    if(led_stat == 0)
+    {
+        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+        led_stat = 1;
+    }
+    else
+    {
+        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+        led_stat = 0;
+    }
 }
 
 void func_unique_request( int data )
@@ -123,6 +140,7 @@ void func_WORK2( int data )
     switch ( data )
     {
         case 0x81:
+            func_led_toggle();
             if(work2_val_cnt <= 0)
             {
                 work2_val_cnt = work2_val_times;
@@ -165,10 +183,8 @@ void serialEvent()
             break;
 
         case WORK2:
-            digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
             func_WORK2(data);
             break;
     }
 
 }
-
