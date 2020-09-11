@@ -21,7 +21,7 @@ int work2_val_cnt = work2_val_times;
 void setup() {
     // initialize digital pin LED_BUILTIN as an output.
     pinMode(LED_BUILTIN, OUTPUT);
-
+    
     StatusLamp = INIT1;
     Serial.begin(4800);
 }
@@ -41,13 +41,13 @@ void func_led_toggle()
 {
     if(led_stat == 0)
     {
-        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-        led_stat = 1;
+        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)     
+        led_stat = 1;  
     }
     else
     {
-        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-        led_stat = 0;
+        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW        
+        led_stat = 0;  
     }
 }
 
@@ -102,6 +102,7 @@ void func_INIT2( int data )
             else
             {
                 Serial.write(0x85);
+                func_led_toggle();
             }
             break;
 
@@ -167,23 +168,23 @@ void serialEvent()
 
     switch ( StatusLamp )
     {
-        case INIT1:
-            digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-            func_INIT1(data);
+        case INIT1: 
+            digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)        
+            func_INIT1(data); 
             break;
 
-        case INIT2:
-            digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-            func_INIT2(data);
+        case INIT2: 
+            digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW        
+            func_INIT2(data); 
             break;
 
-        case WORK1:
-            digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-            func_WORK1(data);
+        case WORK1: 
+            digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)        
+            func_WORK1(data); 
             break;
 
-        case WORK2:
-            func_WORK2(data);
+        case WORK2: 
+            func_WORK2(data); 
             break;
     }
 
