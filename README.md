@@ -1,3 +1,6 @@
-# Ardunino_epson
+# EPSON TW 6100 3D LCD projector ballast hack using Ardunino
 
-EPSON TW 6100 3D projector ballast hack using Ardunino
+This project will help you to hack and emulate EPSON TW6100 3D LCD projector ballast.
+
+If we try to use any light source other than the stock one, the projector will go to error mode (will blink both error lights). 
+To oversome this, you need to hack and emulate communication between Ballast and motherboard.
