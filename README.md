@@ -1,4 +1,4 @@
-# EPSON EH-TW6100 3D LCD projector ballast hack using Ardunino
+# EPSON EH-TW6100 3D LCD projector ballast hack using Arduino
 
 This project will help you to hack and emulate EPSON EH-TW6100 3D LCD projector ballast.
 
